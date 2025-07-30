@@ -20,7 +20,7 @@ fi
 source "../config/suites/${SUITE}.sh"
 
 # Clone the kernel repo
-if ! git -C linux-rockchip pull; then
+if [ ! -d linux-rockchip ] ; then
     git clone --progress -b "${KERNEL_BRANCH}" "${KERNEL_REPO}" linux-rockchip --depth=2
 fi
 
@@ -35,3 +35,5 @@ export LANG=C
 
 # Compile the kernel into a deb package
 fakeroot debian/rules clean binary-headers binary-rockchip do_mainline_build=true
+
+echo "All done!"

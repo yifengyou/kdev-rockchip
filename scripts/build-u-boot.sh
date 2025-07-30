@@ -37,3 +37,5 @@ dpkg-buildpackage -a "$(cat debian/arch)" -d -b -nc -uc --rules-target="${rules}
 dpkg-source --after-build .
 
 rm -f ../*.buildinfo ../*.changes
+
+echo "All done!"
